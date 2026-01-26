@@ -393,8 +393,8 @@ static void printUsage(const char *progname)
            "    --pif (filepath)       : use a binary PIF ROM (filepath) instead of HLE PIF\n"
            "    --verbose              : print lots of information\n"
            "    --help                 : see this help message\n\n"
-           "    --record (path)        : record input to a new replay file at (path)\n"
-           "    --playback (path)      : playback input from an existing replay file at (path)\n\n"
+           "    --replays              : record matches to replay folder\n"
+           "    --playback (path)      : replay match from an existing replay file at (path)\n\n"
            "(plugin-spec):\n"
            "    (pluginname)           : filename (without path) of plugin to find in plugin directory\n"
            "    (pluginpath)           : full path and filename of plugin\n"
@@ -590,11 +590,11 @@ static m64p_error ParseCommandLineMain(int argc, const char **argv)
             (*ConfigSetParameter)(l_ConfigVideo, "Fullscreen", M64TYPE_BOOL, &Fullscreen);
         }
 
-        else if (strcmp(argv[i], "--record") == 0 && ArgsLeft >= 1)
+        else if (strcmp(argv[i], "--replays") == 0 && ArgsLeft >= 1)
         {
-            int Record = 1;
-            (*ConfigSetParameter)(l_ConfigCore, "Record", M64TYPE_BOOL, &Record);
-            (*ConfigSetParameter)(l_ConfigCore, "RecordPath", M64TYPE_STRING, argv[i+1]);
+            int Replays = 1;
+            (*ConfigSetParameter)(l_ConfigCore, "Replays", M64TYPE_BOOL, &Replays);
+            // (*ConfigSetParameter)(l_ConfigCore, "RecordPath", M64TYPE_STRING, argv[i+1]);
         }
 
         else if (strcmp(argv[i], "--playback") == 0 && ArgsLeft >= 1)
