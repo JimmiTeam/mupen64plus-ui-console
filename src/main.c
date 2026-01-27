@@ -594,7 +594,6 @@ static m64p_error ParseCommandLineMain(int argc, const char **argv)
         {
             int Replays = 1;
             (*ConfigSetParameter)(l_ConfigCore, "Replays", M64TYPE_BOOL, &Replays);
-            // (*ConfigSetParameter)(l_ConfigCore, "RecordPath", M64TYPE_STRING, argv[i+1]);
         }
 
         else if (strcmp(argv[i], "--playback") == 0 && ArgsLeft >= 1)
