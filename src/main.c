@@ -395,7 +395,7 @@ static void printUsage(const char *progname)
            "    --help                 : see this help message\n\n"
            "    --replays              : record matches to replay folder\n"
            "    --playback (path)      : replay match from an existing replay file at (path)\n\n"
-           "    --netplay (host) (port): connect to netplay host at (host):(port)\n"
+           "    --netplay (host)       : connect to netplay host at (host)\n"
            "(plugin-spec):\n"
            "    (pluginname)           : filename (without path) of plugin to find in plugin directory\n"
            "    (pluginpath)           : full path and filename of plugin\n"
@@ -607,14 +607,12 @@ static m64p_error ParseCommandLineMain(int argc, const char **argv)
             i++;
         }
 
-        else if (strcmp(argv[i], "--netplay") == 0 && ArgsLeft >= 2)
+        else if (strcmp(argv[i], "--netplay") == 0 && ArgsLeft >= 1)
         {
             int Netplay = 1;
-            int Port = atoi(argv[i+2]);
             (*ConfigSetParameter)(l_ConfigCore, "Netplay", M64TYPE_BOOL, &Netplay);
             (*ConfigSetParameter)(l_ConfigCore, "NetplayHost", M64TYPE_STRING, argv[i+1]);
-            (*ConfigSetParameter)(l_ConfigCore, "NetplayPort", M64TYPE_INT, &Port);
-            i += 2;
+            i++;
         }
 
         else if (strcmp(argv[i], "--windowed") == 0)
