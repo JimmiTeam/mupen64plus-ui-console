@@ -3,3 +3,4 @@
 /projects/msvc/x64/
 /projects/msvc/*.vcxproj.user
 /projects/msvc/.vs
+/.vs
