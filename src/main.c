@@ -395,7 +395,7 @@ static void printUsage(const char *progname)
            "    --help                 : see this help message\n\n"
            "    --replays              : record matches to replay folder\n"
            "    --playback (path)      : replay match from an existing replay file at (path)\n\n"
-           "    --netplay (host) (port): connect to netplay host at (host):(port)\n"
+           "    --netplay (host)       : connect to netplay host at (host)\n"
            "(plugin-spec):\n"
            "    (pluginname)           : filename (without path) of plugin to find in plugin directory\n"
            "    (pluginpath)           : full path and filename of plugin\n"
