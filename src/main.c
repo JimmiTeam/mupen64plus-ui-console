@@ -607,14 +607,34 @@ static m64p_error ParseCommandLineMain(int argc, const char **argv)
             i++;
         }
 
-        else if (strcmp(argv[i], "--netplay") == 0 && ArgsLeft >= 2)
+        else if (strcmp(argv[i], "--netplay") == 0)
         {
             int Netplay = 1;
-            int Port = atoi(argv[i+2]);
             (*ConfigSetParameter)(l_ConfigCore, "Netplay", M64TYPE_BOOL, &Netplay);
-            (*ConfigSetParameter)(l_ConfigCore, "NetplayHost", M64TYPE_STRING, argv[i+1]);
-            (*ConfigSetParameter)(l_ConfigCore, "NetplayPort", M64TYPE_INT, &Port);
-            i += 2;
+        }
+
+        else if (strcmp(argv[i], "--netplaytoken") == 0 && ArgsLeft >= 1)
+        {
+            (*ConfigSetParameter)(l_ConfigCore, "NetplayToken", M64TYPE_STRING, argv[i+1]);
+            i++;
+        }
+
+        else if (strcmp(argv[i], "--netplayrelayhost") == 0 && ArgsLeft >= 1)
+        {
+            (*ConfigSetParameter)(l_ConfigCore, "NetplayRelayHost", M64TYPE_STRING, argv[i+1]);
+            i++;
+        }
+
+        else if (strcmp(argv[i], "--netplayhosting") == 0)
+        {
+            int Hosting = 1;
+            (*ConfigSetParameter)(l_ConfigCore, "NetplayHosting", M64TYPE_BOOL, &Hosting);
+        }
+        
+        else if (strcmp(argv[i], "--netplaystatepath") == 0 && ArgsLeft >= 1)
+        {
+            (*ConfigSetParameter)(l_ConfigCore, "NetplayStatePath", M64TYPE_STRING, argv[i+1]);
+            i++;
         }
 
         else if (strcmp(argv[i], "--windowed") == 0)
